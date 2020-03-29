@@ -2,7 +2,7 @@
 <div class="container-fluid" style="height: 100%;background-color:steelblue;">
     <div class="row justify-content-center">
         <div class="mt-5 col-6 r">
-            <form method="POST" action="{{'/members/index.blade.php'}}" style="padding:30px;">
+            <form method="POST" action="{{'/members/index.blade.php'}}" style="padding:30px;" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="name">NAME :</label>

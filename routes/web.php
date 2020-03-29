@@ -19,6 +19,11 @@ Route::get('/', function () {
 Route::get('/minders', function () {
     return view('minders');
 });
+//contact
+Route::post('/minders', 'contactController@store');
+
+Route::get('/contacts/index.blade.php', 'contactController@index');
+
 Route::get('/allevent', 'eventController@showallevent')->name('allevent');
 Route::get('/allmember', 'MemberController@showallmember')->name('allmember');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Member;
 class MemberController extends Controller
 {
@@ -43,14 +44,21 @@ class MemberController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'image'=>'required',
+            'image'=>'image|mimes:jpg,png,jpeg|max:1999',
             'phone_number'=>'required',
             'gmail'=>'required',
             'postion'=>'required'
         ]);
+        if($request->hasFile('image')){
+            $file=$request->file('image');
+            $ext=$file->getClientOriginalExtension();
+            $name = 'member_'.$request->name.'.'.$ext;
+            $destinationPath = public_path('/images/members');
+            $file->move($destinationPath, $name);
+        }
         $member=new Member();
         $member->name=$request->name;
-        $member->image=$request->image;
+        $member->image=$name;
         $member->phone_number=$request->phone_number;
         $member->gmail=$request->gmail;
         $member->postion=$request->postion;
@@ -69,14 +77,12 @@ class MemberController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'image'=>'required',
             'phone_number'=>'required',
             'gmail'=>'required',
             'postion'=>'required'
         ]);
         $member =Member::find($id);
         $member->name=$request->name;
-        $member->image=$request->image;
         $member->phone_number=$request->phone_number;
         $member->gmail=$request->gmail;
         $member->postion=$request->postion;
@@ -93,6 +99,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $member =Member::find($id);
+        unlink(public_path('/images/members/'.$member->image));
         $member->delete();
 
         return redirect('/members/index.blade.php');

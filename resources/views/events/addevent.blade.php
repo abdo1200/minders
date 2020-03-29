@@ -2,7 +2,7 @@
 <div class="container-fluid" style="height: 100%;background-color:steelblue;">
     <div class="row justify-content-center">
         <div class="mt-5 col-6 r">
-            <form method="POST" action="{{'/events/index.blade.php'}}" style="padding:30px;">
+            <form method="POST" enctype="multipart/form-data" action="{{'/events/index.blade.php'}}" style="padding:30px;">
                 @csrf
                 <div class="form-group">
                     <label for="name">NAME :</label>
@@ -10,7 +10,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cover">COVER PHOTO :</label>
-                    <input type="file" maxlength="25" class="form-control" id="cover" name="cover">                   
+                    <input type="file" maxlength="25" class="form-control-file" id="cover" name="cover">                   
                 </div>
                 <div class="form-group">
                     <label for="place">PLACE :</label>

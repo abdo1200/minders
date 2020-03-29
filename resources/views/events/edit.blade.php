@@ -2,7 +2,7 @@
 <div class="container-fluid" style="height: 100%;background-color:steelblue;">
     <div class="row justify-content-center">
         <div class="mt-5 col-6 r">
-            <form method="POST" action="{{'/events/'. $event->id }}" style="padding:30px;">
+            <form method="POST" action="{{'/events/'. $event->id }}" style="padding:30px;" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-group">
@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cover">COVER PHOTO :</label>
-                    <input type="file" maxlength="25" class="form-control" id="cover" name="cover" value="{{$event->cover}}">                   
+                <input type="text" value="{{ $event->cover}}" disabled>                
                 </div>
                 <div class="form-group">
                     <label for="place">PLACE :</label>
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 @include('layouts.message')
-                <button type="submit" class="mt-3 btn btn-dark">Submit</button>
+                <button id="save" type="submit" class="mt-3 btn btn-dark">Submit</button>
             </form>
         </div>
     </div>

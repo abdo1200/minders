@@ -246,18 +246,21 @@
 <!--contact us-->
 
 <section class="col-12 contact" id="contact">
-    <div class="row contactback">
-        <div class="col-4 col-md-6 col-lg-4 card" data-aos="fade-down" data-aos-duration="1000">
-            <h4 class="contactheader">CONTACT US</h4>
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="Your Email">
-            <textarea type="" placeholder="Your Message"></textarea>
-            <div class="row justify-content-center">
-                <div class="col-12" style="text-align: center;">
-                    <button class="btn">Submit</button>
+    <form action="{{'/minders'}}" method="post">
+        @csrf
+        <div class="row contactback">
+            <div class="col-4 col-md-6 col-lg-4 card" data-aos="fade-down" data-aos-duration="1000">
+                <h4 class="contactheader">CONTACT US</h4>
+                <input type="text" placeholder="Your Name" name="name">
+                <input type="email" placeholder="Your Email" name="email">
+                <textarea type="" placeholder="Your Message" name="message"></textarea>
+                <div class="row justify-content-center">
+                    <div class="col-12" style="text-align: center;">
+                        <button class="btn">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </section>
 @endsection

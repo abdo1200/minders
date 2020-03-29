@@ -5,7 +5,7 @@
         <div class="my-5 col-10 text-center">
             <table class="my-5 table table-dark">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">ID</th>
                         <th scope="col">NAME</th>
                         <th scope="col">COVER</th>
@@ -18,20 +18,20 @@
                 </thead>
                 <tbody>
                     @foreach($events as $event)
-                    <tr>
-                        <th scope="row">{{$event->id}}</th>
-                        <td>{{$event->name}}</td>
-                        <td>{{$event->cover}}</td>
-                        <td>{{$event->place}}</td>
-                        <td>{{$event->time}}</td>
-                        <td>{{$event->state}}</td>
-                        <td>
+                    <tr class="text-center">
+                        <th class="align-middle" scope="row">{{$event->id}}</th>
+                        <td class="align-middle">{{$event->name}}</td>
+                    <td class="align-middle"><img src="{{asset('/images/events/'.$event->cover)}}" height="100px" width="200"></td>
+                        <td class="align-middle">{{$event->place}}</td>
+                        <td class="align-middle">{{$event->time}}</td>
+                        <td class="align-middle">{{$event->state}}</td>
+                        <td class="align-middle">
                             <form method="get" action="{{'/events/'. $event->id. '/edit' }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Edit</button>
                             </form>
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <form method="POST" action="{{'/events/'. $event->id}}">
                                 @csrf
                                 @method('delete')

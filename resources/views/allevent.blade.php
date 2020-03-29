@@ -34,11 +34,11 @@
     <div class="row ml-lg-2 justify-content-around mt-5">
     @foreach($events as $event)
         <div class="col-lg-3 col-md-5 offset-sm-1 offset-md-0 ml-lg-1">
-            <div class="card" id="1">
-                <img src="{{$event->cover}}" class="card-img-top" alt="...">
-  
+        <div class="card" id="{{$event->id}}">
+                <img src="{{asset('/images/events/'.$event->cover)}}" class="card-img-top" alt="..." height="150">
+                
                 <button style="width: 50px;border-radius: 100%;margin-top: -18px;margin-left: 230px;background-color:#F1C40F;" 
-                id="btn2" class="btn" onclick="play('#1')">
+                id="btn2" class="btn" onclick="play('{{'#'.$event->id}}')">
                     <i class="fas fa-arrow-down" style="color: black;"></i>
                 </button>
                 <h5 class="ml-5">{{$event->name}}</h5>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Event;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class EventController extends Controller
 {
@@ -25,14 +26,21 @@ class EventController extends Controller
         $request->validate([
             'name'=>'required',
             'place'=>'required',
-            'cover'=>'required',
+            'cover'=>'image|mimes:jpg,png,jpeg|max:1999',
             'time'=>'required',
             'state'=>'required'
         ]);
+        if($request->hasFile('cover')){
+            $file=$request->file('cover');
+            $ext=$file->getClientOriginalExtension();
+            $name = 'event_'.$request->name.'.'.$ext;
+            $destinationPath = public_path('/images/events');
+            $file->move($destinationPath, $name);
+        }
         $event=new Event();
         $event->name=$request->name;
         $event->place=$request->place;
-        $event->cover=$request->cover;
+        $event->cover=$name;
         $event->time=$request->time;
         $event->state=$request->state;
         $event->save();
@@ -55,14 +63,12 @@ class EventController extends Controller
         $request->validate([
             'name'=>'required',
             'place'=>'required',
-            'cover'=>'required',
             'time'=>'required',
             'state'=>'required'
         ]);
         $event =Event::find($id);
         $event->name=$request->name;
         $event->place=$request->place;
-        $event->cover=$request->cover;
         $event->time=$request->time;
         $event->state=$request->state;
         $event->save();
@@ -72,8 +78,8 @@ class EventController extends Controller
     public function destroy($id)
     {
         $event =Event::find($id);
+        unlink(public_path('images/events/'.$event->cover));
         $event->delete();
-
         return redirect('/events/index.blade.php');
     }
 

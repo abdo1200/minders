@@ -1,8 +1,8 @@
 @extends('layouts.panalnav')
 <div class="container-fluid" style="height: 100%;background-color:steelblue;">
     <div class="row justify-content-center">
-        <div class="mt-5 col-6 r">
-            <form method="POST" action="{{'/members/'. $member->id }}" style="padding:30px;">
+        <div class="mt-5 col-6">
+            <form method="POST" action="{{'/members/'. $member->id }}" style="padding:30px;" enctype="multipart/form-data">
                 @csrf
                 @method('put')
                 <div class="form-group">
@@ -11,7 +11,8 @@
                 </div>
                 <div class="form-group">
                     <label for="image">IMAGE :</label>
-                    <input type="file" maxlength="25" class="form-control" id="image" name="image" value="{{$member->image}}">                   
+                    <input type="text" class="form-control" id="title" name="name"  maxlength="20" value="{{$member->image}}" readonly> 
+                    <small class="text-dark">You can't edit the image </small>
                 </div>
                 <div class="form-group">
                     <label for="phone_number">PHONE NUMBER :</label>
@@ -23,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="postion">POSITION :</label>
-                    <select class="form-control" id="postion" name="postion" value="{{$member->postion}}">
+                    <select class="custom-select" id="postion" name="postion" value="{{$member->postion}}">
                         <option>HB</option>
                         <option>IT</option>
                         <option>PR</option>

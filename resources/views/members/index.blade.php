@@ -5,7 +5,7 @@
         <div class="my-5 col-11 text-center">
             <table class="my-5 table table-dark">
                 <thead>
-                    <tr>
+                    <tr class="text-center">
                         <th scope="col">ID</th>
                         <th scope="col">NAME</th>
                         <th scope="col">IMAGE</th>
@@ -18,20 +18,20 @@
                 </thead>
                 <tbody>
                     @foreach($members as $member)
-                    <tr>
-                        <th scope="row">{{$member->id}}</th>
-                        <td>{{$member->name}}</td>
-                        <td>{{$member->image}}</td>
-                        <td>{{$member->phone_number}}</td>
-                        <td>{{$member->gmail}}</td>
-                        <td>{{$member->postion}}</td>
-                        <td>
+                    <tr class="text-center">
+                        <th class="align-middle" scope="row">{{$member->id}}</th>
+                        <td class="align-middle">{{$member->name}}</td>
+                        <td class="align-middle"><img src="{{asset('/images/members/'.$member->image)}}" height="150px" width="150"></td>
+                        <td class="align-middle">{{$member->phone_number}}</td>
+                        <td class="align-middle">{{$member->gmail}}</td>
+                        <td class="align-middle">{{$member->postion}}</td>
+                        <td class="align-middle">
                             <form method="get" action="{{'/members/'. $member->id. '/edit' }}">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Edit</button>
                             </form>
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <form method="POST" action="{{'/members/'. $member->id}}">
                                 @csrf
                                 @method('delete')
