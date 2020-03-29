@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2020 at 07:03 PM
+-- Generation Time: Mar 29, 2020 at 04:26 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -21,6 +21,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `mind`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'abdelrahman sobhy', 'abdosobhy1200@gmail.com', 'test', '2020-03-28 21:08:55', '2020-03-28 21:08:55');
 
 -- --------------------------------------------------------
 
@@ -44,7 +66,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `name`, `cover`, `time`, `state`, `place`, `created_at`, `updated_at`) VALUES
-(1, 'ool3', 'blake-connally-B3l0g6HLxr8-unsplash.jpg', '2020-03-30', 'Now', 'fcih', '2020-03-28 06:30:14', '2020-03-28 06:30:14');
+(14, 'ool3', 'event_ool3.png', '2020-03-20', 'Closed', 'fcih', '2020-03-28 20:40:26', '2020-03-28 20:40:26'),
+(17, 'dragons', 'event_dragons.png', '0008-08-08', 'Closed', 'fcih', '2020-03-28 20:48:08', '2020-03-28 20:48:08'),
+(18, 'ool', 'event_ool.png', '0099-09-09', 'Closed', 'fcih', '2020-03-28 20:48:28', '2020-03-28 20:48:28');
 
 -- --------------------------------------------------------
 
@@ -83,8 +107,9 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `name`, `image`, `phone_number`, `gmail`, `postion`, `created_at`, `updated_at`) VALUES
-(1, 'abdelrahman sobhy', 'blake-connally-B3l0g6HLxr8-unsplash.jpg', '01017102408', 'abdosobhy1200@gmail.com', 'HB', '2020-03-28 06:22:48', '2020-03-28 06:23:32'),
-(2, 'asmaa mahmoud', 'blake-connally-B3l0g6HLxr8-unsplash.jpg', '102000033', 'asmaa1999@gmail.c0m', 'HB', '2020-03-28 06:24:05', '2020-03-28 06:24:05');
+(5, 'abdelrahman sobhy', 'member_abdelrahman sobhy.jpg', '01017102408', 'abdosobhy1200@gmail.com', 'HB', '2020-03-28 20:51:48', '2020-03-28 20:51:48'),
+(6, 'yehia', 'member_yehia.jpg', '01017102408', 'lll@gmail.c0m', 'IT', '2020-03-28 20:52:19', '2020-03-28 20:52:19'),
+(7, 'abdo mostafa', 'member_abdo mostafa.jpeg', '01017102408', 'abdosobhy1200@gmail.com', 'IT', '2020-03-28 23:54:28', '2020-03-28 23:54:28');
 
 -- --------------------------------------------------------
 
@@ -107,7 +132,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2020_03_28_081253_create_events_table', 2),
-(5, '2020_03_28_081333_create_members_table', 2);
+(5, '2020_03_28_081333_create_members_table', 2),
+(6, '2020_03_28_225447_create_contacts_table', 3);
 
 -- --------------------------------------------------------
 
@@ -148,6 +174,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `events`
@@ -191,10 +223,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -206,13 +244,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
