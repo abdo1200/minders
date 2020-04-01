@@ -33,16 +33,39 @@ class EventController extends Controller
         if($request->hasFile('cover')){
             $file=$request->file('cover');
             $ext=$file->getClientOriginalExtension();
-            $name = 'event_'.$request->name.'.'.$ext;
+            $eventname = 'event_'.$request->name.'.'.$ext;
             $destinationPath = public_path('/images/events');
-            $file->move($destinationPath, $name);
+            $file->move($destinationPath, $eventname);
         }
+        if ($request->has('speakerimage'))
+            {
+                $speakerimages = [];
+                $i=0;
+                foreach ($request->file('speakerimage') as $key => $file)
+                {
+                    $i++;
+                    $ext=$file->getClientOriginalExtension();
+                    $name = $request->name.'_speaker'.$i.'.'.$ext;
+                    $destinationPath = public_path('/images/events/speakers/');
+                    $file->move($destinationPath, $name);
+
+                    if ($name)
+                        array_push($speakerimages, $name);
+                }
+
+            }
         $event=new Event();
         $event->name=$request->name;
         $event->place=$request->place;
-        $event->cover=$name;
+        $event->cover=$eventname;
+        $event->speakers=$request->speakers;
+        if ($request->has('speakerimage')){
+        $event->speakerimage=$speakerimages;}
+        $event->agenda=$request->agenda;
         $event->time=$request->time;
         $event->state=$request->state;
+        $event->description=$request->description;
+        $event->formlink=$request->formlink;
         $event->save();
 
         return redirect('/events/index.blade.php');
@@ -57,6 +80,12 @@ class EventController extends Controller
     {
         $event=Event::find($id);
         return view('events.edit',compact('event'));
+    }
+
+    public function showeventdetails($id)
+    {
+        $event=Event::find($id);
+        return view('/showevent',compact('event'));
     }
     public function update(Request $request, $id)
     {
@@ -79,6 +108,11 @@ class EventController extends Controller
     {
         $event =Event::find($id);
         unlink(public_path('images/events/'.$event->cover));
+        $i=0;
+        if($event->speakerimage[$i]!=null){
+        unlink(public_path('images/events/speakers/'.$event->speakerimage[$i]));
+        $i=$i+1;
+        }
         $event->delete();
         return redirect('/events/index.blade.php');
     }

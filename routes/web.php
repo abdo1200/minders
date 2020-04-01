@@ -27,6 +27,7 @@ Route::get('/contacts/index.blade.php', 'contactController@index');
 Route::get('/allevent', 'eventController@showallevent')->name('allevent');
 Route::get('/allmember', 'MemberController@showallmember')->name('allmember');
 
+
 Auth::routes();
 
 
@@ -44,6 +45,7 @@ Route::put('/events/{id}', 'eventController@update');
 
 //to delete
 Route::delete('/events/{id}', 'eventController@destroy');
+Route::get('/events/{id}', 'eventController@showeventdetails');
 
 
 //members

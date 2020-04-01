@@ -12,8 +12,7 @@
                         <th scope="col">PLACE</th>
                         <th scope="col">TIME</th>
                         <th scope="col">STATE</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">DELETE</th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +24,12 @@
                         <td class="align-middle">{{$event->place}}</td>
                         <td class="align-middle">{{$event->time}}</td>
                         <td class="align-middle">{{$event->state}}</td>
+                        <td class="align-middle text-end">
+                            <form method="get" action="{{'/events/'. $event->id }}">
+                                @csrf
+                                <button class="btn" style="background-color: #F1C40F;">See Event</button>
+                            </form>
+                        </td>
                         <td class="align-middle">
                             <form method="get" action="{{'/events/'. $event->id. '/edit' }}">
                                 @csrf
@@ -51,4 +56,3 @@
         </div>
     </div>
 </div>
-

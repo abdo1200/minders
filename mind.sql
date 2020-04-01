@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2020 at 04:26 AM
+-- Generation Time: Apr 01, 2020 at 01:37 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -37,13 +37,6 @@ CREATE TABLE `contacts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `created_at`, `updated_at`) VALUES
-(1, 'abdelrahman sobhy', 'abdosobhy1200@gmail.com', 'test', '2020-03-28 21:08:55', '2020-03-28 21:08:55');
-
 -- --------------------------------------------------------
 
 --
@@ -57,6 +50,11 @@ CREATE TABLE `events` (
   `time` date NOT NULL,
   `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `speakers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`speakers`)),
+  `speakerimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`speakerimage`)),
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `formlink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `agenda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`agenda`)),
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -65,10 +63,8 @@ CREATE TABLE `events` (
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `name`, `cover`, `time`, `state`, `place`, `created_at`, `updated_at`) VALUES
-(14, 'ool3', 'event_ool3.png', '2020-03-20', 'Closed', 'fcih', '2020-03-28 20:40:26', '2020-03-28 20:40:26'),
-(17, 'dragons', 'event_dragons.png', '0008-08-08', 'Closed', 'fcih', '2020-03-28 20:48:08', '2020-03-28 20:48:08'),
-(18, 'ool', 'event_ool.png', '0099-09-09', 'Closed', 'fcih', '2020-03-28 20:48:28', '2020-03-28 20:48:28');
+INSERT INTO `events` (`id`, `name`, `cover`, `time`, `state`, `place`, `speakers`, `speakerimage`, `description`, `formlink`, `agenda`, `created_at`, `updated_at`) VALUES
+(1, 'ool3', 'event_ool3.png', '2020-04-30', 'Closed', 'fcih', '[\"Omat Hamdy\",\"Ahmed Mostafa\",\"Alaa Ayman\",\"Samer Awad\",\"Hossam Abdelfatah\"]', '[\"ool3_speaker1.jpg\",\"ool3_speaker2.jpg\",\"ool3_speaker3.jpg\",\"ool3_speaker4.jpg\",\"ool3_speaker5.jpg\"]', 'Well, fear nothing my friend, Minders will guide you through every part in our annual event, \"Out Of Loop\" in a 3 day workshop where you\'ll practice almost all the basics you need so there\'s no dilemma any more. At the end of this event you will be able to know these topics and implement them on your own start up perfectly', 'https://docs.google.com/forms/d/1p5r5aBWiBHmNw_aOYcf7u-cae4LtSN2gdd_crcyMSts/viewform?edit_requested=true', '[\"Coming Soon\"]', '2020-04-01 09:07:24', '2020-04-01 09:07:24');
 
 -- --------------------------------------------------------
 
@@ -102,15 +98,6 @@ CREATE TABLE `members` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`id`, `name`, `image`, `phone_number`, `gmail`, `postion`, `created_at`, `updated_at`) VALUES
-(5, 'abdelrahman sobhy', 'member_abdelrahman sobhy.jpg', '01017102408', 'abdosobhy1200@gmail.com', 'HB', '2020-03-28 20:51:48', '2020-03-28 20:51:48'),
-(6, 'yehia', 'member_yehia.jpg', '01017102408', 'lll@gmail.c0m', 'IT', '2020-03-28 20:52:19', '2020-03-28 20:52:19'),
-(7, 'abdo mostafa', 'member_abdo mostafa.jpeg', '01017102408', 'abdosobhy1200@gmail.com', 'IT', '2020-03-28 23:54:28', '2020-03-28 23:54:28');
-
 -- --------------------------------------------------------
 
 --
@@ -128,12 +115,12 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_03_28_081253_create_events_table', 2),
-(5, '2020_03_28_081333_create_members_table', 2),
-(6, '2020_03_28_225447_create_contacts_table', 3);
+(31, '2014_10_12_000000_create_users_table', 1),
+(32, '2014_10_12_100000_create_password_resets_table', 1),
+(33, '2019_08_19_000000_create_failed_jobs_table', 1),
+(34, '2020_03_28_081253_create_events_table', 1),
+(35, '2020_03_28_081333_create_members_table', 1),
+(36, '2020_03_28_225447_create_contacts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -169,7 +156,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'minders', 'Minder@2020', NULL, '$2y$10$E3XKVNWdnS6tR4/CbcDyiO38RmAd834bmtAAZ9pVizdY41d.ADBdG', NULL, '2020-03-28 05:23:05', '2020-03-28 05:23:05');
+(1, 'minders', 'Minder@2020', NULL, '$2y$10$oPatwh46JpNwKzW1Qp1MpODiLmt/WrnYkRATBZU3vlfqIV.JMGdje', NULL, '2020-04-01 08:42:22', '2020-04-01 08:42:22');
 
 --
 -- Indexes for dumped tables
@@ -226,13 +213,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -244,13 +231,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `users`
