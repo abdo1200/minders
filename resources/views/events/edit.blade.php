@@ -23,9 +23,10 @@
                 </div>
                 <div class="form-group">
                     <label for="state">STATE :</label>
-                    <select class="form-control" id="state" name="state" value="{{$event->state}}">
+                    <select class="form-control" id="state" name="state">
+                        <option selected>{{$event->state}}</option>
                         <option>Now</option>
-                        <option selected>Soon</option>
+                        <option>Soon</option>
                         <option>Closed</option>
                     </select>
                 </div>

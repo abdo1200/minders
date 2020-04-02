@@ -7,11 +7,13 @@
 <link rel="stylesheet" href="Font/font.css">
 
 <link rel="stylesheet" href="/css/allmembers.css">
-<section class="row" style="background:black;">
-    <div class="col-12 head-img">
-        <center><img src="img/Mug_Typography.png" alt="" srcset="" width="50%"></center>
+<div class="container-fluid">
+    <div class="row" style="background:black;">
+        <div class="my-5 col-12 head-img">
+            <center><img src="img/Mug_Typography.png" alt="" srcset="" width=""></center>
+        </div>
     </div>
-</section>
+</div>
 <!--up button-->
 <div class="row justify-content-end fixed-bottom">
     <div class=" col-2 col-md-1 offset-md-11">

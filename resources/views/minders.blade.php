@@ -3,7 +3,7 @@
 
 <!--header-->
 <section id="header">
-    <div class="col-12 bigimage">
+    <div class="container-fluid bigimage">
         <div class="row justify-content-center">
             <div class="col-md-6" style="text-align: center;">
                 <img src="img/Shirt-back.png">

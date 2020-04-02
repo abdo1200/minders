@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/style.css">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
 <!-- start of footer -->
 <section class="col-12 footer">
     <footer class="row">

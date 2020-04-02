@@ -24,7 +24,7 @@ class CreateEventsTable extends Migration
             $table->json('speakerimage')->nullable();
             $table->string('description')->nullable();
             $table->string('formlink')->nullable();
-            $table->json('agenda');
+            $table->json('agenda')->nullable();
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['showallevent']);
+        $this->middleware('auth')->except(['showallevent','showeventdetails']);
     }
 
     public function showallevent()

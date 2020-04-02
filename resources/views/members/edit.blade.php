@@ -11,7 +11,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">IMAGE :</label>
-                    <input type="text" class="form-control" id="title" name="name"  maxlength="20" value="{{$member->image}}" readonly> 
+                    <input type="text" class="form-control" id="title" name="image"  maxlength="20" value="{{$member->image}}" readonly> 
                     <small class="text-dark">You can't edit the image </small>
                 </div>
                 <div class="form-group">
@@ -24,7 +24,8 @@
                 </div>
                 <div class="form-group">
                     <label for="postion">POSITION :</label>
-                    <select class="custom-select" id="postion" name="postion" value="{{$member->postion}}">
+                    <select class="custom-select" id="postion" name="postion">
+                        <option selected>{{$member->postion}}</option>
                         <option>HB</option>
                         <option>IT</option>
                         <option>PR</option>

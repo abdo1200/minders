@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="/css/events.css">
-@extends('layouts.panalnav')
+@include('layouts.nav')
+<script>
+    document.getElementById('events').classList.add('active');
+    document.getElementById("home").classList.remove("active")
+
+</script>
 <style>
     .cover{
         background: url("{{asset('/images/events/'.$event->cover)}}")  no-repeat fixed center center;
@@ -130,3 +135,5 @@
         </div>
     </section>
     @endif
+
+	@include('layouts.footer')

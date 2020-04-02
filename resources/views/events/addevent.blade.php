@@ -6,19 +6,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">NAME :</label>
-                    <input type="text" class="form-control" id="title" name="name"  maxlength="20">
+                    <input type="text" class="form-control" id="title" name="name"  >
                 </div>
                 <div class="form-group">
                     <label for="cover">COVER PHOTO :</label>
-                    <input type="file" maxlength="25" class="form-control-file" id="cover" name="cover">                   
+                    <input type="file"  class="form-control-file" id="cover" name="cover">                   
                 </div>
                 <div class="form-group">
                     <label for="place">PLACE :</label>
-                    <input type="text" maxlength="25" class="form-control" id="place" name="place" >
+                    <input type="text"  class="form-control" id="place" name="place" >
                 </div>
                 <div class="form-group">
                     <label for="time">TIME :</label>
-                    <input type="date" maxlength="25" class="form-control" id="time" name="time" >
+                    <input type="date"  class="form-control" id="time" name="time" >
                 </div>
                 <div class="form-group">
                     <label for="description">DESCRIPTION :</label>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2020 at 01:37 PM
+-- Generation Time: Apr 02, 2020 at 10:51 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -54,17 +54,10 @@ CREATE TABLE `events` (
   `speakerimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`speakerimage`)),
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `formlink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `agenda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`agenda`)),
+  `agenda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `events`
---
-
-INSERT INTO `events` (`id`, `name`, `cover`, `time`, `state`, `place`, `speakers`, `speakerimage`, `description`, `formlink`, `agenda`, `created_at`, `updated_at`) VALUES
-(1, 'ool3', 'event_ool3.png', '2020-04-30', 'Closed', 'fcih', '[\"Omat Hamdy\",\"Ahmed Mostafa\",\"Alaa Ayman\",\"Samer Awad\",\"Hossam Abdelfatah\"]', '[\"ool3_speaker1.jpg\",\"ool3_speaker2.jpg\",\"ool3_speaker3.jpg\",\"ool3_speaker4.jpg\",\"ool3_speaker5.jpg\"]', 'Well, fear nothing my friend, Minders will guide you through every part in our annual event, \"Out Of Loop\" in a 3 day workshop where you\'ll practice almost all the basics you need so there\'s no dilemma any more. At the end of this event you will be able to know these topics and implement them on your own start up perfectly', 'https://docs.google.com/forms/d/1p5r5aBWiBHmNw_aOYcf7u-cae4LtSN2gdd_crcyMSts/viewform?edit_requested=true', '[\"Coming Soon\"]', '2020-04-01 09:07:24', '2020-04-01 09:07:24');
 
 -- --------------------------------------------------------
 
@@ -97,6 +90,13 @@ CREATE TABLE `members` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `members`
+--
+
+INSERT INTO `members` (`id`, `name`, `image`, `phone_number`, `gmail`, `postion`, `created_at`, `updated_at`) VALUES
+(3, 'abdelrahman sobhy', 'member_abdelrahman sobhy.jpeg', '01017102408', 'abdosobhy1200@gmail.com', 'HB', '2020-04-02 17:41:57', '2020-04-02 17:41:57');
 
 -- --------------------------------------------------------
 
@@ -219,7 +219,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -231,7 +231,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
