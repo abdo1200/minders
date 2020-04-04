@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2020 at 10:51 PM
+-- Generation Time: Apr 05, 2020 at 12:13 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -52,9 +52,9 @@ CREATE TABLE `events` (
   `place` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `speakers` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`speakers`)),
   `speakerimage` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`speakerimage`)),
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `formlink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `agenda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `agenda` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`agenda`)),
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -91,13 +91,6 @@ CREATE TABLE `members` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `members`
---
-
-INSERT INTO `members` (`id`, `name`, `image`, `phone_number`, `gmail`, `postion`, `created_at`, `updated_at`) VALUES
-(3, 'abdelrahman sobhy', 'member_abdelrahman sobhy.jpeg', '01017102408', 'abdosobhy1200@gmail.com', 'HB', '2020-04-02 17:41:57', '2020-04-02 17:41:57');
-
 -- --------------------------------------------------------
 
 --
@@ -115,12 +108,12 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(31, '2014_10_12_000000_create_users_table', 1),
-(32, '2014_10_12_100000_create_password_resets_table', 1),
-(33, '2019_08_19_000000_create_failed_jobs_table', 1),
-(34, '2020_03_28_081253_create_events_table', 1),
-(35, '2020_03_28_081333_create_members_table', 1),
-(36, '2020_03_28_225447_create_contacts_table', 1);
+(37, '2014_10_12_000000_create_users_table', 1),
+(38, '2014_10_12_100000_create_password_resets_table', 1),
+(39, '2019_08_19_000000_create_failed_jobs_table', 1),
+(40, '2020_03_28_081253_create_events_table', 1),
+(41, '2020_03_28_081333_create_members_table', 1),
+(42, '2020_03_28_225447_create_contacts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -150,13 +143,6 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'minders', 'Minder@2020', NULL, '$2y$10$oPatwh46JpNwKzW1Qp1MpODiLmt/WrnYkRATBZU3vlfqIV.JMGdje', NULL, '2020-04-01 08:42:22', '2020-04-01 08:42:22');
 
 --
 -- Indexes for dumped tables
@@ -219,7 +205,7 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -231,19 +217,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

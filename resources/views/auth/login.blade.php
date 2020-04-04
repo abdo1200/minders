@@ -1,4 +1,5 @@
 <?php use App\User;?>
+@auth
 @extends('layouts.panalnav')
 {{$user =User::all()}}
 @if ($user->first())
@@ -7,9 +8,11 @@
 User::create([
     'name' => 'Minders',
     'email' => 'Minders@2020',
-    'password' => Hash::make('Minder@2020'),
+    'password' => Hash::make('Minders@2020'),
 ]) }}
 @endif
+@endauth
+
 <div class="container-fluid" style="background-color:black;height:100%;margin-top:-20;" id="panal">
     <div class="row mt-5">
         <div class="col-5 mt-5">
@@ -81,3 +84,4 @@ User::create([
 }
 </style>
 
+</html>

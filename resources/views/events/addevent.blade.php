@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="description">DESCRIPTION :</label>
-                    <input type="text" class="form-control" id="description" name="description" >
+                    <textarea class="form-control" id="description" name="description"></textarea>
                     <small class="text-warning">Optional</small>
                 </div>
                 <div class="form-group">
@@ -30,6 +30,7 @@
                     <input type="text" class="form-control" id="formlink" name="formlink" >
                     <small class="text-warning">Optional</small>
                 </div>
+                
                 <div class="form-group">
                     <label for="state">STATE :</label>
                     <select class="form-control" id="state" name="state" >

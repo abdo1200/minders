@@ -100,6 +100,9 @@ class EventController extends Controller
         $event->place=$request->place;
         $event->time=$request->time;
         $event->state=$request->state;
+        $event->agenda=$request->agenda;
+        $event->description=$request->description;
+        $event->formlink=$request->formlink;
         $event->save();
         return redirect('/events/index.blade.php');
     }

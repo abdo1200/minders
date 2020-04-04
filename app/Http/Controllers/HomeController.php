@@ -31,7 +31,7 @@ class HomeController extends Controller
             User::create([
                 'name' => 'Minders',
                 'email' => 'Minders@2020',
-                'password' => Hash::make('Minder@2020'),
+                'password' => Hash::make('Minders@2020'),
             ]);
         }
         
