@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
+use App\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('minders','panal');
     }
 
     /**
@@ -21,8 +23,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function panal(){
+        $user =User::all();
+        if ($user->first()) {
+            //do nothig
+        }else{
+            User::create([
+                'name' => 'Minders',
+                'email' => 'Minders@2020',
+                'password' => Hash::make('Minder@2020'),
+            ]);
+        }
+        
+
+        return view('panal');
+    }
     public function index()
     {
         return view('home');
+    }
+    public function minders()
+    {
+        //$events=Event::orderby('id','desc'); 
+        //$even=Event::take(1)->get();
+        $events=Event::orderby('id','desc');
+        $even=$events->first();
+        return view('/minders',compact('even'));
     }
 }

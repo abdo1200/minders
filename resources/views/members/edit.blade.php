@@ -7,20 +7,20 @@
                 @method('put')
                 <div class="form-group">
                     <label for="name">NAME :</label>
-                    <input type="text" class="form-control" id="title" name="name"  maxlength="20" value="{{$member->name}}">
+                    <input type="text" class="form-control" id="title" name="name"   value="{{$member->name}}">
                 </div>
                 <div class="form-group">
                     <label for="image">IMAGE :</label>
-                    <input type="text" class="form-control" id="title" name="image"  maxlength="20" value="{{$member->image}}" readonly> 
+                    <input type="text" class="form-control" id="title" name="image"   value="{{$member->image}}" readonly> 
                     <small class="text-dark">You can't edit the image </small>
                 </div>
                 <div class="form-group">
                     <label for="phone_number">PHONE NUMBER :</label>
-                    <input type="text" maxlength="25" class="form-control" id="phone_number" name="phone_number" value="{{$member->phone_number}}">
+                    <input type="text"  class="form-control" id="phone_number" name="phone_number" value="{{$member->phone_number}}">
                 </div>
                 <div class="form-group">
                     <label for="gmail">EMAIL :</label>
-                    <input type="text" maxlength="25" class="form-control" id="gmail" name="gmail" value="{{$member->gmail}}">
+                    <input type="text"  class="form-control" id="gmail" name="gmail" value="{{$member->gmail}}">
                 </div>
                 <div class="form-group">
                     <label for="postion">POSITION :</label>

@@ -1,3 +1,4 @@
+
 @extends('layouts.panalnav')
 <div class="container-fluid mt-5" id="panal">
     <div class="row mt-5 text-center">
@@ -23,3 +24,4 @@
     }
 
 </style>
+

@@ -91,7 +91,7 @@ nav {
 
 /*up button*/
 
-.up-btn {
+#upbtn .up-btn {
     background-color: black;
     color: #F1C40F;
     box-shadow: 2px 5px 2px 0px #F1C40F;
@@ -99,7 +99,7 @@ nav {
     display: none;
 }
 
-.up-btn:hover {
+#upbtn .up-btn:hover {
     background-color: #F1C40F;
     color: black;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
@@ -339,7 +339,7 @@ nav {
     color: white;
 }
 
-.team-btn {
+#team .team-btn {
     padding: 12px 20px 12px 20px;
     color: white;
     margin-top: 50px;
@@ -348,7 +348,7 @@ nav {
     background: black radial-gradient(circle, transparent 1%, #F1C40F 1%) center/15000%;
 }
 
-.team-btn:hover {
+#team .team-btn:hover {
     background-size: 100%;
     background-color: #F1C40F;
     color: white;

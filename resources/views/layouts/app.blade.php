@@ -3,8 +3,6 @@
 <head>
         <title>Minders-Entrepreneurship Organization</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/all.css" rel="stylesheet">
-        <script src="js/all.js"></script>
         <link rel="stylesheet" href="css/aos.css">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="Font/font.css">
@@ -23,12 +21,13 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/aos.js"></script>
+        <script src="js/main.js"></script>
         <script>
-          AOS.init({
-      
-          });
-      
-      
+                AOS.init({
+                   
+                });
+        
+        
         </script>
 </body>
 </html>

@@ -51,7 +51,7 @@ class ContactController extends Controller
         $contact->message=$request->message;
         $contact->save();
 
-        return redirect('/minders');
+        return redirect()->back()->with('alert','Your Message is Sent Successfully');
     }
 
     /**

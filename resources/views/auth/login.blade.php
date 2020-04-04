@@ -1,6 +1,16 @@
+<?php use App\User;?>
 @extends('layouts.panalnav')
-
-<div class="container-fluid" style="background-color:black;height:100%;" id="panal">
+{{$user =User::all()}}
+@if ($user->first())
+@else
+{{ 
+User::create([
+    'name' => 'Minders',
+    'email' => 'Minders@2020',
+    'password' => Hash::make('Minder@2020'),
+]) }}
+@endif
+<div class="container-fluid" style="background-color:black;height:100%;margin-top:-20;" id="panal">
     <div class="row mt-5">
         <div class="col-5 mt-5">
             <form class="mt-5" method="POST" action="{{ route('login') }}">

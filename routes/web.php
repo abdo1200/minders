@@ -13,12 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('panal');
-});
-Route::get('/minders', function () {
-    return view('minders');
-});
+
+
+Route::get('/', 'HomeController@panal')->name('panal');
+
+Route::get('/minders', 'HomeController@minders')->name('minders');
 //contact
 Route::post('/minders', 'contactController@store');
 

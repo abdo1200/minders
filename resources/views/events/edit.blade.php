@@ -7,7 +7,7 @@
                 @method('put')
                 <div class="form-group">
                     <label for="name">NAME :</label>
-                    <input type="text" class="form-control" id="title" name="name"  maxlength="20" value="{{$event->name}}">
+                    <input type="text" class="form-control" id="title" name="name"  value="{{$event->name}}">
                 </div>
                 <div class="form-group">
                     <label for="cover">COVER PHOTO :</label>
@@ -15,11 +15,11 @@
                 </div>
                 <div class="form-group">
                     <label for="place">PLACE :</label>
-                    <input type="text" maxlength="25" class="form-control" id="place" name="place" value="{{$event->place}}">
+                    <input type="text" class="form-control" id="place" name="place" value="{{$event->place}}">
                 </div>
                 <div class="form-group">
                     <label for="time">TIME :</label>
-                    <input type="date" maxlength="25" class="form-control" id="time" name="time" value="{{$event->time}}">
+                    <input type="date" class="form-control" id="time" name="time" value="{{$event->time}}">
                 </div>
                 <div class="form-group">
                     <label for="state">STATE :</label>

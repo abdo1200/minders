@@ -18,15 +18,16 @@
 				    <h1>{{$event->name}}</h1>
 				    <p>Hurry up and join our event!</p>
 			
-			@if($event->state=='Closed')
-			<button class="btn btn-danger" disabled>{{$event->state}}</button>
-			@elseif($event->state=='Soon')
-			<button class="btn btn-primary" disabled>{{$event->state}}</button>
-			@else
-			<button class="btn btn-success" disabled>{{$event->state}}</button>
-			@endif
+					@if($event->state=='Closed')
+					<button class="btn form_btn btn-danger col-2" disabled>{{$event->state}}</button>
+					@elseif($event->state=='Soon')
+					<button class="btn form_btn btn-primary col-2" disabled>{{$event->state}}</button>
+					@else
+					<button class="btn form_btn btn-success col-2" disabled>{{$event->state}}</button>
+					@endif
 			   </div>
 		  </div>
+		  
 		<div class="row event_header_icons justify-content-center">	
 			<div class="col-6 col-md-4">	
 				<button type="button" class="btn col-2" data-toggle="tooltip" data-placement="bottom" title="{{$event->time}}">
@@ -45,12 +46,7 @@
     </div>  
 	 </div> 
 	</section>	
-  <!--up button-->
-  <div class="row justify-content-end fixed-bottom">
-    <div class=" col-2 col-md-1 offset-md-11">
-      <a href="#nav"><button class="btn up-btn"><i class="fas fa-arrow-up"></i></button></a>
-    </div>
-  </div>
+
 
 	<!-- Description Section -->
 	@if ($event->description)

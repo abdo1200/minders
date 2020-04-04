@@ -13,7 +13,7 @@
     </div>
 </section>
 <!--up button-->
-<div class="row justify-content-end fixed-bottom">
+<div class="row justify-content-end fixed-bottom" id="upbtn">
     <div class=" col-2 col-md-1 offset-md-11">
         <a href="#nav"><button class="btn up-btn"><i class="fas fa-arrow-up"></i></button></a>
     </div>
@@ -91,7 +91,7 @@
                 <h3 style="color:#ffff;" data-aos="fade-right" data-aos-duration="1000">Latest Events</h2>
             </div>
             <div class="col-2 offset-5" data-aos="fade-right" data-aos-duration="1000">
-                <button class="btn event-btn" id="event-btn"><a href="all-events.html">All Events</a></button>
+                <button class="btn event-btn" id="event-btn"><a href="allevent">All Events</a></button>
             </div>
         </div>
         <div class="row eventlinerow justify-content-center" data-aos="fade-up" data-aos-duration="1000">
@@ -100,55 +100,24 @@
             </div>
         </div>
         <div class="row justify-content-center" style="margin-top: 80px;">
-            <div class="col-1 col-lg-2" style="text-align: center;margin-top: 200px;">
-                <button class="btnpre" id="pre" data-aos="fade-left" data-aos-duration="1000" style="border: 0;height: 40px;width: 40px;border-radius: 3px; color: black;background-color: #F1C40F;"><i class="fas fa-caret-left" style="font-size: 25px;"></i></button>
-            </div>
-            <div class="col-10 col-lg-8 card" id="card1" data-aos="fade-up" data-aos-duration="2000">
+            <div class="col-10 col-lg-8 card" data-aos="fade-left" data-aos-duration="1000">
                 <div class="row">
                     <div class="col-6 col-lg-6">
-                        <img style="height: 450px;" src="img/events/ws'20/Event_Cover.png" alt="" id="slider" width="100%" height="100%">
+                        <img style="height: 450px;" src="{{asset('/images/events/'.$even->cover)}}" alt="" id="slider" width="100%" height="100%">
                     </div>
                     <div class=" col-6 col-lg-6">
-                        <h1 style="margin-top: 100px;color: #F1C40F;">Minders'20 Workshops</h1>
-                        <p style="margin-top: 30px;color: black;">‏Hello from the most important campaigns that Minders & Ultras FCI introduced to thier audience.</p>
-                        <button class="event-btn" style="border: 0;height: 50px;width: 140px;border-radius: 10px;"><a href="Event-ws'20.html">Show Event</a></button>
+                        <h1 style="margin-top: 100px;color: #F1C40F;">{{$even->name}}</h1>
+                        <p style="margin-top: 30px;color: black;">{{$even->description}}</p>
+                        <form method="get" action="{{'/events/'. $even->id }}">
+                            @csrf
+                            <button class="event-btn" style="border: 0;height: 50px;width: 140px;border-radius: 10px;">
+                                Show Event
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="col-10 col-lg-8 card" id="card2">
-                <div class="row">
-                    <div class="col-5">
-                        <img style="height: 450px;" src="img/events/OOL2/FaceBook Event Profile Picture.png" alt="" id="slider" width="100%">
-                    </div>
-                    <div class="col-7">
-                        <h1 style="margin-top: 100px;color: #F1C40F;">Out Of LOOP 2</h1>
-                        <p style="margin-top: 30px;color: black;">
-                            The Main Idea From This Event To Help The Students Know Better About
-                            Entrepreneurship And How To Start Your Own Business. </p>
-                        <button class="event-btn" style="border: 0;height: 50px;width: 140px;border-radius: 10px;"><a href="Event-ool2.html">Show Event</a></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-10 col-lg-8 card" id="card3">
-                <div class="row">
-                    <div class="col-6">
-                        <img style="height: 450px;" src="img/events/rec20/Recruit20_Cover.png" alt="" id="slider" width="100%">
-                    </div>
-                    <div class="col-6">
-                        <h1 style="margin-top: 100px;color: #F1C40F;">Minders'20 Recruitment</h1>
-                        <p style="margin-top: 30px;color: black;">
-                            Minders Is A Non Profit Organization As It's A Student Activity Discovered On 2014 And It Supports
-                            The Entrepreneurship ,
-                            Hurry Up And Join Us To Be One Of Our Precious Team.
-                        </p>
-                        <button class="event-btn" style="border: 0;height: 50px;width: 140px;border-radius: 10px;"><a href="Event-rec-20.html">Show Event</a></button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-1 col-lg-2" style="text-align: center;margin-top: 200px;">
-                <button class="btnnext" id="next" data-aos="fade-right" data-aos-duration="1000" style="color: black;background-color: #F1C40F;border: 0;height: 40px;width: 40px;border-radius: 3px;"><i class="fas fa-caret-right" style="font-size: 25px;"></i></button>
-            </div>
-        </div>
+        </div>        
     </div>
 </section>
 <!--sponser-->
@@ -263,4 +232,11 @@
         </div>
     </form>
 </section>
+<script>
+    var msg ='{{Session::get('alert')}}';
+    var exist ='{{Session::has('alert')}}';
+    if(exist){
+        alert(msg);
+    }
+</script>
 @endsection

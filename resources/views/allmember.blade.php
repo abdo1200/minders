@@ -14,12 +14,6 @@
         </div>
     </div>
 </div>
-<!--up button-->
-<div class="row justify-content-end fixed-bottom">
-    <div class=" col-2 col-md-1 offset-md-11">
-        <a href="#nav"><button class="btn up-btn"><i class="fas fa-arrow-up"></i></button></a>
-    </div>
-</div>
 <!-- Cards -->
 <div class="container-fluid cards-section" id="allmember">
     <div class="row justify-content-around about-head" style="padding-top: 50px;">
